@@ -102,11 +102,14 @@
   .project ul.plinks { list-style: none; padding: 0; margin: 4px 0 0; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 15px; font-weight: 500; }
 
   .timeline { list-style: none; padding: 0; margin: 0; }
-  .timeline li { display: grid; grid-template-columns: 150px 1fr; gap: 20px; padding: 0 0 18px; }
+  .timeline > li { display: grid; grid-template-columns: 150px 1fr; gap: 20px; padding: 0 0 18px; }
   .timeline .when { color: var(--muted); font-size: 15px; padding-top: 2px; }
   .timeline .what strong { font-weight: 600; }
   .timeline .what span { display: block; color: var(--muted); font-size: 15px; }
 
+  .timeline .what ul.duties { list-style: disc; margin: 8px 0 6px; padding-left: 18px; max-width: 46em; }
+  .timeline .what ul.duties li { margin: 0 0 6px; padding-left: 2px; }
+  .timeline .what ul.duties li::marker { color: var(--leaf); }
   ol.pubs { margin: 0; padding-left: 22px; }
   ol.pubs li { margin: 0 0 14px; padding-left: 6px; max-width: 46em; }
   ol.pubs li::marker { color: var(--muted); font-size: 15px; }
@@ -122,7 +125,7 @@
     section { grid-template-columns: 1fr; gap: 18px; padding: 34px 0; }
     .project { grid-template-columns: 1fr; gap: 14px; }
     .project figure { max-width: 420px; }
-    .timeline li { grid-template-columns: 1fr; gap: 0; }
+    .timeline > li { grid-template-columns: 1fr; gap: 0; }
   }
 </style>
 </head>
@@ -154,7 +157,7 @@
 
       <article class="project text-only">
         <div>
-          <h3>Editable 3D plant models from scans, using a vision-language model</h3>
+          <h3>A Vision-Language Model (VLM)-based Pipeline for End-to-End Procedural Modeling of Field-Grown Maize from Point Clouds</h3>
           <p class="venue">arXiv preprint, 2026</p>
           <p>A vision-language model (Gemini) finds individual leaves in views of a 3D plant scan, and the pipeline turns them into an editable 3D model of the plant. On 100 field-grown maize plants it found 99.4% of hand-labeled leaves and replaced hours of manual tuning with about 14 minutes of processing per plant. I also prototyped an AI agent layer (LangChain/LangGraph) to run and coordinate the pipeline steps.</p>
           <ul class="plinks">
@@ -168,7 +171,7 @@
           <img src="https://baskargroup.github.io/FloraForge/static/images/teaser_pipeline.png" alt="FloraForge workflow: a conversation with an LLM produces a plant generator and a settings file that yield editable 3D plants" loading="lazy">
         </figure>
         <div>
-          <h3>FloraForge</h3>
+          <h3>FloraForge: Procedural Generation of Editable and Analysis-Ready 3D Plant Geometric Models Using LLM-Assisted Template Design</h3>
           <p class="venue">Smart Agricultural Technology, 2026</p>
           <p>Build editable 3D plant models by describing the plant to an LLM. The LLM writes and refines the Python modeling code step by step, and each plant is saved as a short, readable settings file that scientists can change without touching code. Tested on maize and mung bean, and used to simulate how much sunlight virtual fields capture.</p>
           <ul class="plinks">
@@ -184,7 +187,7 @@
           <img src="https://baskargroup.github.io/MaizeField3D/static/images/B73_NURBS_Surface.gif" alt="Rotating 3D model of a B73 maize plant from the MaizeField3D dataset" loading="lazy">
         </figure>
         <div>
-          <h3>MaizeField3D</h3>
+          <h3>MaizeField3D: A Curated 3D Point Cloud and Procedural Model Dataset of Field-Grown Maize from a Diversity Panel</h3>
           <p class="venue">Plant Phenomics, 2025</p>
           <p>A public dataset of 1,045 3D scans of field-grown maize from a diverse genetic panel. I led the labeling of 520 plants down to individual leaves and stalks, quality control, building a 3D model of every labeled plant, and the public release on Hugging Face and GitHub.</p>
           <ul class="plinks">
@@ -198,7 +201,7 @@
 
       <article class="project text-only">
         <div>
-          <h3>3D maize models from LiDAR scans</h3>
+          <h3>Procedural Generation of 3D Maize Plant Architecture from LiDAR Data</h3>
           <p class="venue">Computers and Electronics in Agriculture, 2025</p>
           <p>An open-source method that converts raw laser scans of maize into smooth, editable 3D leaf models (NURBS surfaces). It produced the 3D models for all 520 labeled plants in MaizeField3D.</p>
           <ul class="plinks">
@@ -216,11 +219,36 @@
     <ol class="timeline">
       <li>
         <div class="when">Aug 2026 – present</div>
-        <div class="what"><strong>Precision Phenotyping Intern</strong><span>Vylor</span></div>
+        <div class="what"><strong>Precision Phenotyping Intern</strong><span>Vylor</span>
+          <ul class="duties">
+            <li>Building a Python pipeline that predicts lodging scores for soybean rows from 3D scan data, trained against existing ground-truth scores.</li>
+            <li>Developing a Python tool that finds stalks, counts stems, and separates individual plants in 3D scans of maize rows, so traits can be measured for each plant instead of for the whole row.</li>
+            <li>Validating field data during collection by reviewing data reports and visualizations to confirm data quality.</li>
+          </ul>
+        </div>
       </li>
       <li>
         <div class="when">Aug 2022 – present</div>
-        <div class="what"><strong>Graduate Research Assistant</strong><span>Computational Physics and Mechanics Laboratory, Iowa State University</span></div>
+        <div class="what"><strong>Graduate Research Assistant</strong><span>Computational Physics and Mechanics Laboratory, Iowa State University</span>
+          <ul class="duties">
+            <li>Built an automated pipeline that uses a vision-language AI model (Gemini API) to find individual leaves in 3D plant scans and turn them into editable 3D plant models. Tested on 100 field-grown maize plants, it found 99.4% of hand-labeled leaves, matched the real scans more closely than our earlier method for 99 of the 100 plants, and replaced 2–6 hours of manual tuning per plant with about 14 minutes of processing.</li>
+            <li>Prototyped an AI agent layer (LangChain/LangGraph) on top of this pipeline, where agents ran each step, decided when to move to the next one, and ran independent steps in parallel.</li>
+            <li>Developed FloraForge, a method in which an LLM (GPT-5) writes and refines Python 3D-modeling code through step-by-step conversation, so plant scientists without 3D-modeling experience can create editable models of new plant species. Each plant is stored as a short, human-readable settings file, and the models were checked against real 3D scans.</li>
+            <li>Led the creation of MaizeField3D, a public dataset of 1,045 3D scans of field-grown maize from a diverse genetic panel: labeled 520 plants down to individual leaves and stalks, ran quality control, built a 3D model of every labeled plant, and packaged and released the dataset on Hugging Face and GitHub for other researchers.</li>
+            <li>Created an open-source method that converts raw laser scans of maize into smooth, editable 3D leaf models (NURBS surfaces), and used it to produce the 3D models for all 520 labeled MaizeField3D plants. Also reconstructed plants in 3D from photos and video using NeRF-based methods.</li>
+            <li>Ran sunlight-capture simulations on virtual maize and mung bean fields built from these 3D models to compare how much light the plants absorb across genotypes and growth stages.</li>
+            <li>Set up hyperspectral imaging and 3D laser scanning data collection for pepper plants and trained machine learning models to detect nutrient deficiency and disease.</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="when">Summer 2017</div>
+        <div class="what"><strong>Research &amp; Development Intern</strong><span>Automotive Industries Research &amp; Innovation Center (AIRIC), SAIPA, Tehran, Iran</span>
+          <ul class="duties">
+            <li>Researched solar vehicle technologies and sustainability metrics and prepared technical reports.</li>
+            <li>Developed a MATLAB benchmarking tool for automotive performance comparison.</li>
+          </ul>
+        </div>
       </li>
     </ol>
   </section>
@@ -250,10 +278,12 @@
   <section id="publications">
     <h2>Publications</h2>
     <ol class="pubs">
-      <li><span class="me">M. Hadadi</span>, et al., “FloraForge: Procedural Generation of Editable and Analysis-Ready 3D Plant Geometric Models Using LLM-Assisted Template Design,” <em>Smart Agricultural Technology</em>, 14, 102316, 2026. <a href="https://doi.org/10.1016/j.atech.2026.102316">Paper</a></li>
-      <li><span class="me">M. Hadadi</span>, et al., “Procedural Generation of 3D Maize Plant Architecture from LiDAR Data,” <em>Computers and Electronics in Agriculture</em>, 2025. <a href="https://doi.org/10.1016/j.compag.2025.110382">Paper</a></li>
-      <li>E. Kimara*, <span class="me">M. Hadadi*</span>, et al., “MaizeField3D: A Curated 3D Point Cloud and Procedural Model Dataset of Field-Grown Maize from a Diversity Panel,” <em>Plant Phenomics</em>, 2025. <a href="https://doi.org/10.1016/j.plaphe.2025.100108">Paper</a> (*equal contribution)</li>
+      <li><span class="me">M. Hadadi</span>, et al., “Procedural Generation of 3D Maize Plant Architecture from LiDAR Data,” <em>Computers and Electronics in Agriculture</em>, 2025. <a href="https://doi.org/10.1016/j.compag.2025.110382">Paper</a>, <a href="https://github.com/Mozhganhd/ProceduralMaize3D">Code</a></li>
+      <li>E. Kimara*, <span class="me">M. Hadadi*</span>, et al., “MaizeField3D: A Curated 3D Point Cloud and Procedural Model Dataset of Field-Grown Maize from a Diversity Panel,” <em>Plant Phenomics</em>, 2025. <a href="https://doi.org/10.1016/j.plaphe.2025.100108">Paper</a>, <a href="https://baskargroup.github.io/MaizeField3D/">Project page</a>, <a href="https://huggingface.co/datasets/BGLab/MaizeField3D">Dataset</a> (*equal contribution)</li>
+      <li><span class="me">M. Hadadi</span>, et al., “FloraForge: Procedural Generation of Editable and Analysis-Ready 3D Plant Geometric Models Using LLM-Assisted Template Design,” <em>Smart Agricultural Technology</em>, 14, 102316, 2026. <a href="https://doi.org/10.1016/j.atech.2026.102316">Paper</a>, <a href="https://baskargroup.github.io/FloraForge/">Project page</a>, <a href="https://github.com/baskargroup/FloraForge">Code</a></li>
       <li><span class="me">M. Hadadi</span>, et al., “A Vision-Language Model (VLM)-based Pipeline for End-to-End Procedural Modeling of Field-Grown Maize from Point Clouds,” arXiv:2610.03468, 2026. <a href="https://arxiv.org/abs/2610.03468">Paper</a></li>
+      <li>S. Joshi, J. I. Di Salvo, Y. Shen, <span class="me">M. Hadadi</span>, et al., “Neural 3D Reconstruction and Immersive VR Visualization of Row Crops Across Phenological Growth Stages,” <em>Smart Agricultural Technology</em>, 14, 102024, 2026. <a href="https://doi.org/10.1016/j.atech.2026.102024">Paper</a></li>
+      <li>J. I. Di Salvo, S. Joshi, <span class="me">M. Hadadi</span>, et al., “Phenological Growth Stages of Finger Millet (<em>Eleusine coracana</em> (L.)) Using 3-D Phenotyping with Relevance to Breeding Applications,” <em>Frontiers in Plant Science</em>, 17, 1747707, 2026. <a href="https://doi.org/10.3389/fpls.2026.1747707">Paper</a></li>
     </ol>
   </section>
 
